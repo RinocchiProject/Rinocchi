@@ -1,0 +1,14 @@
+[Mysql]
+Database: database name
+Username: username
+Password: password 
+Host: url
+Port: port
+
+[Bot]
+Prefix: !
+Owner: id
+Token: token 
+
+[Env]
+Dev: true
