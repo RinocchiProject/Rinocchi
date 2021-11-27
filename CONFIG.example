@@ -6,9 +6,11 @@ Host: url
 Port: port
 
 [Bot]
-Prefix: !
+Prefix: r?
 Owner: id
 Token: token 
 
 [Env]
 Dev: true
+
+[End]
