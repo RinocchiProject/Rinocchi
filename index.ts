@@ -6,6 +6,3 @@ const content = readFileSync('./CONFIG', 'utf-8'),
     obj = Object.assign({}, ...Parse(content));
 
 global.settings = obj;
-
-import { test } from './src/util/ConfigParser';
-test();
