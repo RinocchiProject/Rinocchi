@@ -56,6 +56,13 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
+"@types/mysql@^2.15.19":
+  version "2.15.19"
+  resolved "https://registry.yarnpkg.com/@types/mysql/-/mysql-2.15.19.tgz#d158927bb7c1a78f77e56de861a3b15cae0e7aed"
+  integrity sha512-wSRg2QZv14CWcZXkgdvHbbV2ACufNy5EgI8mBBxnJIptchv7DBy/h53VMa2jDhyo0C9MO4iowE6z9vF8Ja1DkQ==
+  dependencies:
+    "@types/node" "*"
+
 "@types/node-fetch@^2.5.12":
   version "2.5.12"
   resolved "https://registry.yarnpkg.com/@types/node-fetch/-/node-fetch-2.5.12.tgz#8a6f779b1d4e60b7a57fb6fd48d84fb545b9cc66"
