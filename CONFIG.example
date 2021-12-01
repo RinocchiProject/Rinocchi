@@ -1,16 +1,16 @@
 [Mysql]
-Database: database name
-Username: username
-Password: password 
-Host: url
-Port: port
+Database = database name
+Username = username
+Password = password 
+Host = url
+Port = port
 
 [Bot]
-Prefix: r?
-Owner: id
-Token: token 
+Prefix = r?
+Owner = id
+Token = token 
 
 [Env]
-Dev: true
+Dev = true
 
 [End]

@@ -5,9 +5,9 @@ function Parse(content: string): any[] {
         let props = list.split('\n'),
             obj = {};
         props.forEach((prop) => {
-            let val = prop.split(':');
+            let val = prop.split('=');
             if (val[0].length < 1) return;
-            obj[String(val[0]).toUpperCase()] = String(val[1]).trim();
+            obj[String(val[0]).trim().toUpperCase()] = String(val[1]).trim();
         });
         results.push(obj);
     });
