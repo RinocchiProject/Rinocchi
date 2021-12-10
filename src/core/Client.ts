@@ -9,6 +9,7 @@ class Bot extends Client {
     public log: Logs;
     public commands: CommandManager;
     public events: EventsManager;
+    public temp: Map<string, any> = new Map();
     constructor(options: ClientOptions) {
         super(options);
         this.lang = new Locale();
