@@ -17,4 +17,4 @@ const client = new Client({
         'GUILD_WEBHOOKS',
     ],
 });
-client.login(global.settings.TOKEN);
+client.login();
