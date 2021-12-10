@@ -1,3 +1,4 @@
+import { readFileSync } from 'fs';
 function Parse(content: string): any[] {
     let results = [],
         regex = /(?<=\]).+?(?=\[)/gs;
@@ -15,7 +16,9 @@ function Parse(content: string): any[] {
 }
 
 export default Parse;
-
+const content = readFileSync('./CONFIG', 'utf-8'),
+    obj = Object.assign({}, ...Parse(content));
+export { obj };
 /*
  Créditos: cdleary
  [https://stackoverflow.com/questions/1086404/string-to-object-in-js]
