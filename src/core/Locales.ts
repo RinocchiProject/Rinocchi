@@ -7,11 +7,11 @@ class Lang {
     private folders: string[];
     constructor() {
         this.main = ['pt-BR'];
-        this.folders = ['errors', 'commands'];
+        this.folders = ['errors', 'commands', 'basic'];
     }
     async load(language: string) {
-        let locale;
-        function setFixed(translate) {
+        let locale: any;
+        function setFixed(translate: any) {
             locale = translate;
         }
         setFixed(i18next.getFixedT(language));
