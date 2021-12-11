@@ -54,7 +54,7 @@ export default class MessageCreate extends Event {
             message.reply(Locale('basic:mention', { prefix: guildPrefix }));
             return;
         }
-        if (!message.content.match(guildPrefix)) return;
+        if (!message.content.startsWith(guildPrefix)) return;
 
         let args = message.content.replace(guildPrefix, '').trim().split(/ /g);
         let commandName = args.shift().toLowerCase(),
@@ -79,6 +79,8 @@ export default class MessageCreate extends Event {
             return message.reply(
                 Locale('errors:command.unknow', { name: commandName })
             );
+        if (command.dev == true && message.author.id !== client.settings.OWNER)
+            return;
         command.run(context);
     }
 }
