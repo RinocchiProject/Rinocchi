@@ -1,0 +1,5 @@
+{
+  "command": {
+    "unknow": "O comando `{{name}}` não existe."
+  }
+}
