@@ -11,7 +11,7 @@ class Bot extends Client {
     public commands: CommandManager;
     public events: EventsManager;
     public temp: Map<string, any> = new Map();
-    private settings: typeof Settings = Settings;
+    public settings: typeof Settings = Settings;
     constructor(options?: ClientOptions) {
         super(options);
         this.lang = new Locale();
@@ -21,7 +21,7 @@ class Bot extends Client {
     }
     public async login(): Promise<string> {
         await this.lang.init();
-        // this.commands.loadPath('./build/src/commands');
+        this.commands.loadPath('./build/src/commands');
         this.events.loadPath('./build/src/events');
         this.log.ok('OK');
         return super.login(this.settings.TOKEN);
