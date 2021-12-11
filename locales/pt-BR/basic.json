@@ -4,6 +4,6 @@
     "thousandths": "alguns milésimos",
     "seconds": "segundos",
     "second": "segundo",
-    "message": "Espere mais {{time}}, para executar um comando novamente."
+    "message": "Espere mais {{time}} para executar um comando novamente."
   }
 }
