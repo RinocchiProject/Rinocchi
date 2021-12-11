@@ -1,6 +1,7 @@
 import mysql from 'mysql';
+import { obj as settings } from './ConfigParser';
 
-const { DATABASE, PORT, HOST, PASSWORD, USERNAME } = global.settings;
+const { DATABASE, PORT, HOST, PASSWORD, USERNAME } = settings;
 
 const connection = mysql.createConnection({
     host: HOST,
@@ -20,4 +21,4 @@ function query(sql: string, values: any[]): Promise<any> {
     });
 }
 
-export default { query, connection };
+export { query, connection };
