@@ -1,0 +1,6 @@
+{
+  "prefix": {
+    "error": "Por favor informe um prefixo válido de no máximo 3 caracteres.",
+    "ok": "Prefixo alterado!\n `{{old}}` -> `{{new}}`"
+  }
+}
