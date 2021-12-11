@@ -1,6 +1,6 @@
 {
   "name": "rinocchi",
-  "version": "1.0.0",
+  "version": "0.2.1-dev",
   "main": "index.js",
   "repository": "git@github.com:RinocchiProject/Rinocchi.git",
   "author": "CloudyyUw",
