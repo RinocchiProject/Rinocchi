@@ -1,0 +1,9 @@
+{
+  "mention": "Meu prefixo neste servidor é `{{prefix}}`. Você pode alterar utilizando o comando `{{prefix}}prefix <novo prefixo>`",
+  "cooldown": {
+    "thousandths": "alguns milésimos",
+    "seconds": "segundos",
+    "second": "segundo",
+    "message": "Espere mais {{time}}, para executar um comando novamente."
+  }
+}
