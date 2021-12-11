@@ -5,7 +5,7 @@ interface UserType {
 }
 
 export default class Cooldown {
-    private static users: Map<string, UserType> = new Map();
+    public static users: Map<string, UserType> = new Map();
 
     public static set(id: string, time: number = 5) {
         let user: UserType = {
