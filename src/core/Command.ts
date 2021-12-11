@@ -3,4 +3,5 @@ export default class Command {
     public aliases: string[];
     public dev: boolean;
     public minArgs: number;
+    public run(...args: any[]) {}
 }
