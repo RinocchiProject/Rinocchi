@@ -49,18 +49,14 @@ export default class MessageCreate extends Event {
 
         let userLang = await this.fetchUserLang(message.author.id, client),
             guildPrefix = await this.fetchGuildPrefix(message.guild.id, client),
-            Locale = await client.lang.load(userLang),
-            RegPrefix = new RegExp(
-                `^(${guildPrefix}|<@!?${client.user.id}>)( )*`,
-                'gi'
-            );
+            Locale = await client.lang.load(userLang);
         if (message.content.replace(/[<@!>]/g, '') == client.user.id) {
             message.reply(Locale('basic:mention', { prefix: guildPrefix }));
             return;
         }
-        if (!message.content.match(RegPrefix)) return;
+        if (!message.content.match(guildPrefix)) return;
 
-        let args = message.content.replace(RegPrefix, '').trim().split(/ /g);
+        let args = message.content.replace(guildPrefix, '').trim().split(/ /g);
         let commandName = args.shift().toLowerCase(),
             command: Command = client.commands.findByName(commandName),
             context = new Context(client, message, args, Locale);
@@ -79,6 +75,10 @@ export default class MessageCreate extends Event {
                 Locale('basic:cooldown.message', { time: usrCooldownTime })
             );
         } else Cooldown.set(message.author.id);
+        if (!command)
+            return message.reply(
+                Locale('errors:command.unknow', { name: commandName })
+            );
         command.run(context);
     }
 }
