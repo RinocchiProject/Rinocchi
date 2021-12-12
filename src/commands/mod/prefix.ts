@@ -7,6 +7,10 @@ export default class Prefix extends Command {
     public dev: boolean = false;
     public async run(context: Context): Promise<void> {
         let { client, message, args, locale } = context;
+        if (!message.member.permissions.has('MANAGE_GUILD')) {
+            message.reply(locale('errors:perm.manage_guild'));
+            return;
+        }
         if (args.length == 0 || args[0].length > 3) {
             message.reply(locale('commands:prefix.error'));
             return;
