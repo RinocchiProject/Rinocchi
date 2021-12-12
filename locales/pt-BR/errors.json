@@ -1,5 +1,8 @@
 {
   "command": {
     "unknow": "O comando `{{name}}` não existe."
+  },
+  "perm": {
+    "manage_guild": "Você não tem a permissão de `GERENCIAR O SERVIDOR`, portanto não pode executar esse comando"
   }
 }
