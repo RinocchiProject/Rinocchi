@@ -6,7 +6,8 @@
   "author": "CloudyyUw",
   "license": "GPL-3.0",
   "scripts": {
-    "start": "tsc && node build/index.js",
+    "start": "node build/index.js",
+    "dev": "tsc && node build/index.js",
     "build": "tsc"
   },
   "dependencies": {
