@@ -28,4 +28,5 @@ async function GetGuildByID(client: Client, id: string) {
     return req.find((res) => !res) || false;
 }
 
-export default { GetGuildByID, GetUserByID, GetEmojiByID, GetEmojiByName };
+export { GetGuildByID, GetUserByID, GetEmojiByID, GetEmojiByName };
+
