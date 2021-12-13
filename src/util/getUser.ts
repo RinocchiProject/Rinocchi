@@ -12,7 +12,7 @@ export default {
         return (await response.json()) as UserApiType;
     },
     async avatar(id: string, size: number, auth: string): Promise<string> {
-        let hash = await this.obj(id, auth).avatar;
+        let hash = (await this.obj(id, auth)).avatar;
         return `https://cdn.discordapp.com/avatars/${id}/${hash}.${
             String(hash).startsWith('a_') ? 'gif' : 'png'
         }?size=${size}`;
