@@ -6,6 +6,11 @@
   "avatar": {
     "emb": {
       "title": "Avatar de {{username}}"
-    }
+    },
+    "unknow_user": "Não encontrei nenhum usuário com esse argumento."
+  },
+  "ping": {
+    "wait": "Calculando..",
+    "result": "**Shard**: #{{shard}}\n**Servidor**: {{ms}} ms\n**API**: {{api}} ms"
   }
 }
