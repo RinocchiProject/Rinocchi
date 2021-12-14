@@ -81,6 +81,11 @@ export default class MessageCreate extends Event {
             );
         if (command.dev == true && message.author.id !== client.settings.OWNER)
             return;
+
+        if (args[0] == 'help' && typeof command.help !== 'undefined') {
+            command.help(context);
+            return;
+        }
         command.run(context);
     }
 }

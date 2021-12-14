@@ -9,6 +9,15 @@ export default class Avatar extends Command {
     public name: string = 'avatar';
     public aliases: string[] = ['a'];
     public dev: boolean = false;
+    public help(context: Context): void {
+        let { message, locale } = context;
+        message.reply(
+            locale('help:avatar', {
+                example_mention: 'avatar @user',
+                example_id: 'avatar 12345',
+            })
+        );
+    }
     public async run(context: Context): Promise<void> {
         let { client, message, args, locale } = context,
             user: any =
@@ -18,21 +27,21 @@ export default class Avatar extends Command {
             apiUser: ApiUserType = await Request.obj(
                 user.id,
                 client.settings.TOKEN
-            ),
-            emb = new MessageEmbed()
-                .setTitle(
-                    locale('commands:avatar.emb.title', {
-                        username: `${apiUser.username}#${apiUser.discriminator}`,
-                    })
-                )
-                .setColor('RANDOM')
-                .setImage(
-                    await Request.avatar(
-                        apiUser.id,
-                        2048,
-                        client.settings.TOKEN
-                    )
-                );
+            );
+        if (!apiUser.id) {
+            message.reply('commands:avatar.unknow_user');
+            return;
+        }
+        let emb = new MessageEmbed()
+            .setTitle(
+                locale('commands:avatar.emb.title', {
+                    username: `${apiUser.username}#${apiUser.discriminator}`,
+                })
+            )
+            .setColor('RANDOM')
+            .setImage(
+                await Request.avatar(apiUser.id, 2048, client.settings.TOKEN)
+            );
         message.reply({ embeds: [emb] });
     }
 }
