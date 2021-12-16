@@ -5,6 +5,7 @@ import { query } from '../util/Database';
 import Command from '../core/Command';
 import Context from '../types/CommandContext';
 import Cooldown from '../core/Cooldown';
+import Blacklist from '../util/Blacklist';
 
 export default class MessageCreate extends Event {
     public name: string = 'messageCreate';
@@ -46,6 +47,26 @@ export default class MessageCreate extends Event {
     public async run(client: Client, message: Message) {
         if (message.author.bot || message.webhookId || !message.guild.id)
             return;
+
+        if (client.temp.get(`blacklist.guild.${message.guild.id}`) == true)
+            return;
+        if (client.temp.get(`blacklist.user.${message.author.id}`) == true)
+            return;
+
+        if (!client.temp.has(`blacklist.guild.${message.guild.id}`)) {
+            if (await Blacklist.hasGuild(message.guild.id)) {
+                await Blacklist.store(client, 'guild', message.guild.id, true);
+                return;
+            } else
+                await Blacklist.store(client, 'guild', message.guild.id, false);
+        }
+        if (!client.temp.has(`blacklist.user.${message.author.id}`)) {
+            if (await Blacklist.hasUser(message.author.id)) {
+                await Blacklist.store(client, 'user', message.author.id, true);
+                return;
+            } else
+                await Blacklist.store(client, 'user', message.author.id, false);
+        }
 
         let userLang = await this.fetchUserLang(message.author.id, client),
             guildPrefix = await this.fetchGuildPrefix(message.guild.id, client),
