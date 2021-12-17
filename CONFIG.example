@@ -10,6 +10,9 @@ Prefix = r?
 Owner = id
 Token = token 
 
+[Upload]
+UPLOAD_URL = url.com/upload (POST)
+
 [Env]
 Dev = true
 
