@@ -10,7 +10,7 @@ export default function (client: Client) {
 
     app.get(GuildInfo.route, new GuildInfo(client).handle);
 
-    app.listen(process.env.PORT || 3000, () =>
+    app.listen(process.env.PORT || 8080, () =>
         console.log(`${chalk.hex('#d654c3')('[API]')}: Online`)
     );
 }
