@@ -1,4 +1,5 @@
 import Client from './src/core/Client';
+import Server from './src/server/main';
 
 const client = new Client({
     intents: [
@@ -18,3 +19,5 @@ const client = new Client({
     ],
 });
 client.login();
+
+client.on('ready', () => Server(client));
