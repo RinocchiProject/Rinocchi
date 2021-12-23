@@ -1,16 +1,20 @@
-{
-  "prefix": {
-    "error": "Por favor informe um prefixo válido de no máximo 3 caracteres.",
-    "ok": "Prefixo alterado!\n `{{old}}` -> `{{new}}`"
-  },
+{ 
   "avatar": {
     "emb": {
       "title": "Avatar de {{username}}"
     },
     "unknow_user": "Não encontrei nenhum usuário com esse argumento."
-  },
-  "ping": {
-    "wait": "Calculando..",
-    "result": "**Shard**: #{{shard}}\n**Servidor**: {{ms}} ms\n**API**: {{api}} ms"
+  }, 
+  "anime": {
+    "emb": {
+      "stats": "Status:",
+      "age": "Faixa etária:",
+      "type": "Tipo:",
+      "rating": "Avaliação:",
+      "start": "Data de início:",
+      "end": "Data de encerramento:",
+      "chapters": { "title":"Volumes / Capítulos:", "message": "{{v}} | {{c}}"}
+    },
+    "date": "pt-BR"
   }
 }
