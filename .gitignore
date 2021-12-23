@@ -107,3 +107,4 @@ dist
 CONFIG 
 build/
 .dev-backup
+*.copy
