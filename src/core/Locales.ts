@@ -7,7 +7,7 @@ class Lang {
     private folders: string[];
     constructor() {
         this.main = ['pt-BR'];
-        this.folders = ['errors', 'commands', 'basic', 'help'];
+        this.folders = ['errors', 'commands'];
     }
     async load(language: string) {
         let locale: any;
