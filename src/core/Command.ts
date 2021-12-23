@@ -1,7 +1,5 @@
 export default class Command {
     public name: string;
-    public aliases: string[];
     public dev: boolean;
     public run(...args: any[]) {}
-    public help?(...args: any) {}
 }
