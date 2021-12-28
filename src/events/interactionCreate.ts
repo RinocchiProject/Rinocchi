@@ -24,6 +24,17 @@ export default class InteractionEvent extends Event {
         }
     }
     public async run(client: Client, interaction: Interaction) {
+        if (interaction.isSelectMenu()) {
+            if (interaction.customId == 'backupRemove') {
+                await interaction.deferUpdate();
+                client.handler.emit('backupRemove', interaction);
+                /* await interaction.editReply({
+                    content: '<a:loading:824330214015631370> Hold on..',
+                    components: [],
+                });*/
+            }
+            return;
+        }
         if (!interaction.isCommand()) return;
         let userLang = await this.fetchUserLang(interaction.user.id, client),
             Locale = await client.lang.load(userLang),
@@ -52,9 +63,6 @@ export default class InteractionEvent extends Event {
             interaction.user.id !== client.settings.OWNER
         )
             return;
-        console.log(interaction.user);
-        console.log(Locale);
-        console.log(args);
         command.run(new Context(client, interaction, args, Locale));
     }
 }
