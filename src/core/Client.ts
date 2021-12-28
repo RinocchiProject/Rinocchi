@@ -4,6 +4,7 @@ import Logs from '../util/Logger';
 import CommandManager from './CommandManager';
 import EventsManager from './EventsManager';
 import { obj as Settings } from '../util/ConfigParser';
+import EventEmitter from 'events';
 
 class Bot extends Client {
     public lang: Locale;
@@ -12,12 +13,14 @@ class Bot extends Client {
     public events: EventsManager;
     public temp: Map<string, any> = new Map();
     public settings: typeof Settings = Settings;
+    public handler: EventEmitter;
     constructor(options?: ClientOptions) {
         super(options);
         this.lang = new Locale();
         this.log = new Logs();
         this.events = new EventsManager(this);
         this.commands = new CommandManager(this);
+        this.handler = new EventEmitter();
     }
     public async login(): Promise<string> {
         await this.lang.init();
