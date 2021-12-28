@@ -28,10 +28,6 @@ export default class InteractionEvent extends Event {
             if (interaction.customId == 'backupRemove') {
                 await interaction.deferUpdate();
                 client.handler.emit('backupRemove', interaction);
-                /* await interaction.editReply({
-                    content: '<a:loading:824330214015631370> Hold on..',
-                    components: [],
-                });*/
             }
             return;
         }
