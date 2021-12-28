@@ -1,20 +1,38 @@
-{ 
-  "avatar": {
-    "emb": {
-      "title": "Avatar de {{username}}"
+{
+    "avatar": {
+        "emb": {
+            "title": "Avatar de {{username}}"
+        },
+        "unknow_user": "Não encontrei nenhum usuário com esse argumento."
     },
-    "unknow_user": "Não encontrei nenhum usuário com esse argumento."
-  }, 
-  "anime": {
-    "emb": {
-      "stats": "Status:",
-      "age": "Faixa etária:",
-      "type": "Tipo:",
-      "rating": "Avaliação:",
-      "start": "Data de início:",
-      "end": "Data de encerramento:",
-      "chapters": { "title":"Volumes / Capítulos:", "message": "{{v}} | {{c}}"}
+    "anime": {
+        "emb": {
+            "stats": "Status:",
+            "age": "Faixa etária:",
+            "type": "Tipo:",
+            "rating": "Avaliação:",
+            "start": "Data de início:",
+            "end": "Data de encerramento:",
+            "chapters": {
+                "title": "Volumes / Capítulos:",
+                "message": "{{v}} | {{c}}"
+            }
+        },
+        "date": "pt-BR"
     },
-    "date": "pt-BR"
-  }
+    "backup": {
+        "responses": {
+            "delete": "Agora escolha o que você não quer incluir em seu backup",
+            "upload": {
+                "init": "<a:loading:824330214015631370> Criando backup...",
+                "send": "<a:loading:824330214015631370> Enviando arquivo pra nuvem..",
+                "ok": "Upload concluído!\nO id do seu backup é `{{id}}`. Use `/restore` com esse id para restaurar este backup.",
+                "err": "Ocorreu um erro ao enviar.\nCódigo de erro: `{{err}}`"
+            }
+        },
+        "copy": {
+            "msg": "Por segurança, essa é uma cópia do seu backup.\nPara restaurar utilizando um arquivo, utilize a dashboard (WIP)",
+            "err": "Eu não consegui enviar a cópia de segurança em sua DM, portanto irei enviar aqui.\nEsse arquivo ficará disponível apenas por 2 minutos."
+        }
+    }
 }
