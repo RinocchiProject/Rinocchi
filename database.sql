@@ -20,5 +20,7 @@ CREATE TABLE IF NOT EXISTS blacklist_guild (
 
 CREATE TABLE IF NOT EXISTS backups (
   id varchar(100) NOT NULL PRIMARY KEY,
-  url varchar(255) NOT NULL
+  url varchar(255) NOT NULL,
+  user varchar(50) NOT NULL,
+  guild varchar(50) NOT NULL
 )
