@@ -9,7 +9,8 @@ const connection = mysql.createConnection({
     user: USERNAME,
     password: PASSWORD,
     database: DATABASE,
-    ssl: {},
+    // only ssl on prod. database
+    //ssl: {},
 });
 
 function query(sql: string, values: any[]): Promise<any> {
