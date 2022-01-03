@@ -59,6 +59,14 @@ export default class InteractionEvent extends Event {
             interaction.user.id !== client.settings.OWNER
         )
             return;
-        command.run(new Context(client, interaction, args, Locale));
+        command.run(
+            new Context(
+                client,
+                interaction,
+                args,
+                Locale,
+                interaction.options.data
+            )
+        );
     }
 }
