@@ -82,7 +82,8 @@ export default class backup extends Command {
             content: locale('commands:backup.responses.delete'),
             components: [row],
         });
-        client.handler.once('backupRemove', async (interaction: any) => {
+        client.handler.on('backupRemove', async (interaction: any) => {
+            if (interaction.user.id !== message.user.id) return;
             let removeArgs = [];
             if (interaction.values.includes('none')) removeArgs = [];
             else removeArgs = interaction.values;
@@ -140,10 +141,15 @@ export default class backup extends Command {
                                 content: ' ',
                                 embeds: [emb],
                             });
-                            await query('INSERT INTO backups VALUES (?, ?)', [
-                                info.id,
-                                response.url,
-                            ]);
+                            await query(
+                                'INSERT INTO backups VALUES (?, ?, ?, ?)',
+                                [
+                                    info.id,
+                                    response.url,
+                                    message.user.id,
+                                    message.guildId,
+                                ]
+                            );
                             try {
                                 await client.users.cache
                                     .get(interaction.user.id)
