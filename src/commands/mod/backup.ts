@@ -11,6 +11,7 @@ import fs from 'fs';
 import zlib from 'zlib';
 import { exec } from 'child_process';
 import { query } from '../../util/Database';
+import ParseSize from '../../util/ParseSize';
 
 const Backup = require('discord-backup');
 
@@ -101,7 +102,74 @@ export default class backup extends Command {
                         saveImages: args[0],
                     }
                 ),
-                file = `${process.cwd()}/backups/${info.id}.json`;
+                file = `${process.cwd()}/backups/${info.id}.json`,
+                fileSize = fs.statSync(file).size;
+            // check user storage limit (4 MB)
+            let { results } = await query(
+                'SELECT (used) FROM user_storage WHERE id=?',
+                [`${message.user.id}`]
+            );
+            if (results[0]) {
+                if (results[0].used + fileSize > 4194304) {
+                    await interaction.editReply({
+                        content: ' ',
+                        embeds: [
+                            new MessageEmbed()
+                                .setColor('RED')
+                                .setTitle(
+                                    locale(
+                                        'commands:backup.error.storage.title'
+                                    )
+                                )
+                                .addField(
+                                    locale(
+                                        'commands:backup.error.storage.backup.title'
+                                    ),
+                                    locale(
+                                        'commands:backup.error.storage.backup.size',
+                                        { size: ParseSize(fileSize) }
+                                    ),
+                                    true
+                                )
+                                .addField(
+                                    locale(
+                                        'commands:backup.error.storage.storage.title'
+                                    ),
+                                    locale(
+                                        'commands:backup.error.storage.storage.size',
+                                        {
+                                            size: ParseSize(
+                                                Number(results[0].used)
+                                            ),
+                                        }
+                                    ),
+                                    true
+                                )
+                                .addField(
+                                    locale(
+                                        'commands:backup.error.storage.total.title'
+                                    ),
+                                    locale(
+                                        'commands:backup.error.storage.total.size',
+                                        {
+                                            size: ParseSize(
+                                                Number(results[0].used) +
+                                                    fileSize
+                                            ),
+                                        }
+                                    ),
+                                    true
+                                ),
+                        ],
+                    });
+
+                    fs.unlinkSync(file);
+                    return;
+                }
+            } else
+                await query('INSERT INTO user_storage VALUES (?, 0)', [
+                    `${message.user.id}`,
+                ]);
             fs.createReadStream(file)
                 .pipe(zlib.createGzip())
                 .pipe(fs.createWriteStream(file + '.gz'))
@@ -126,6 +194,7 @@ export default class backup extends Command {
                                 });
                                 return;
                             }
+                            console.log(stdout);
                             let response = JSON.parse(stdout),
                                 emb = new MessageEmbed()
                                     .setColor('GREEN')
@@ -142,13 +211,18 @@ export default class backup extends Command {
                                 embeds: [emb],
                             });
                             await query(
-                                'INSERT INTO backups VALUES (?, ?, ?, ?)',
+                                'INSERT INTO backups VALUES (?, ?, ?, ?, ?)',
                                 [
                                     info.id,
                                     response.url,
                                     message.user.id,
                                     message.guildId,
+                                    fileSize,
                                 ]
+                            );
+                            await query(
+                                'UPDATE user_storage SET used=used + ? WHERE id=?',
+                                [fileSize, `${message.user.id}`]
                             );
                             try {
                                 await client.users.cache
