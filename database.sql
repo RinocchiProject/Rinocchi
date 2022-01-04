@@ -22,5 +22,11 @@ CREATE TABLE IF NOT EXISTS backups (
   id varchar(100) NOT NULL PRIMARY KEY,
   url varchar(255) NOT NULL,
   user varchar(50) NOT NULL,
-  guild varchar(50) NOT NULL
+  guild varchar(50) NOT NULL,
+  size INT NOT NULL DEFAULT 0
+)
+
+CREATE TABLE IF NOT EXISTS user_storage (
+  id varchar(50) NOT NULL PRIMARY KEY,
+  used INT DEFAULT 0
 )
