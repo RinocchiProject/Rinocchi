@@ -1,4 +1,5 @@
 {
+    "locale_string": "pt-br",
     "avatar": {
         "emb": {
             "title": "Avatar de {{username}}"
@@ -52,5 +53,48 @@
     "petpet": {
         "loadError": "Não consegui carregar a imagem que você informou, verifique se a URL está correta e tente novamente.",
         "err": "Ocorreu um erro ao gerar a imagem.\nCódigo de erro: `{{err}}`"
+    },
+    "invite": {
+        "unknow": "Não encontrei nenhum convite com essa URL. Verifique se informou corretamente e se o convite ainda é válido.",
+        "expires_at": {
+            "title": "Expira:",
+            "value": {
+                "null": "Nunca",
+                "date": "<t:{{date}}:R>"
+            }
+        },
+        "inviter": {
+            "title": "Criador do convite",
+            "value": {
+                "notUser": "Ninguém",
+                "hasUser": "**{{name}}**#{{code}}. ID: `{{id}}`"
+            }
+        },
+        "description": "Sem descrição.",
+        "files": {
+            "title": "Arquivos",
+            "banner": {
+                "has": "[Banner]({{url}})",
+                "null": "Sem Banner"
+            },
+            "splashs": {
+                "has": "[Splash]({{url}})",
+                "null": "Sem Splash"
+            },
+            "icon": {
+                "has": "[Ícone]({{url}})",
+                "null": "Sem ícone"
+            }
+        },
+        "nsfw": {
+            "title": "NSFW",
+            "false": "Não",
+            "true": "Sim",
+            "level": "Nível {{lvl}}"
+        },
+        "members": {
+            "title": "Membros",
+            "value": "{{presence}} ativos de {{total}} membros (≈ {{calc}}%)"
+        }
     }
 }
