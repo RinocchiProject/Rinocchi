@@ -1,5 +1,5 @@
-import Client from './src/core/Client';
-import Server from './src/server/main';
+import Client from './core/Client';
+import Server from './server/main';
 import { REST } from '@discordjs/rest';
 import { Routes } from 'discord-api-types/v9';
 

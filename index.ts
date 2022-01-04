@@ -2,7 +2,7 @@ import { obj } from './src/util/ConfigParser';
 import { ShardingManager } from 'discord.js';
 
 // Sharding
-const shard = new ShardingManager('./build/main.js', {
+const shard = new ShardingManager('./build/src/main.js', {
     token: obj.TOKEN,
     totalShards: 'auto',
 });
