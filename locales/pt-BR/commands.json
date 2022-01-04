@@ -33,6 +33,20 @@
         "copy": {
             "msg": "Por segurança, essa é uma cópia do seu backup.\nPara restaurar utilizando um arquivo, utilize a dashboard (WIP)",
             "err": "Eu não consegui enviar a cópia de segurança em sua DM, portanto irei enviar aqui.\nEsse arquivo ficará disponível apenas por 2 minutos."
+        },
+        "error": {
+            "storage": {
+                "title": "Você vai ultrapassar seu limite de armazenamento com este backup!",
+                "backup": {
+                    "title": "Tamanho do backup:",
+                    "size": "{{size}}"
+                },
+                "storage": {
+                    "title": "Armazenamento utilizado:",
+                    "size": "{{size}}"
+                },
+                "total": { "title": "Tamanho total:", "size": "{{size}}" }
+            }
         }
     },
     "petpet": {
