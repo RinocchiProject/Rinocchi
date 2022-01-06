@@ -96,5 +96,9 @@
             "title": "Membros",
             "value": "{{presence}} ativos de {{total}} membros (≈ {{calc}}%)"
         }
+    },
+    "storage": {
+        "title": "Armazenamento utilizado:",
+        "value": "Você utilizou {{used}} de {{max}}.\n{{bar}} {{percentage}}%"
     }
 }
