@@ -104,8 +104,8 @@ dist
 .tern-port
 
 # DEV
-CONFIG 
 build/
 .dev-backup
 *.copy
 backups/
+.config.yaml
