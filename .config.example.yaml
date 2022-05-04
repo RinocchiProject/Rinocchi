@@ -1,0 +1,36 @@
+# Main project settings
+rinocchi:
+  dev: true # docs/dev-env.md 
+  version: 0.0.1 # wip
+  whitelist:
+    ids:
+      - your id 
+    guild: test server
+  token: token
+  dashboard:
+    http:
+      port: 3000
+      api: true # false to disable
+    logs: keep # keep, none, temp (wip)
+    admin:
+      username: admin 
+      password: admin 
+  backups:
+    enable: true
+    url: https://example.com/upload (POST)
+    query:
+      auth: auth token
+    vip: true # false = everyone can make a backup (not recommended)
+    sizes:
+      amount: 2 # number of backup copies stored from a server
+      size: 2024 # in KB | size per backup 
+      user: 2097152 # in KB | max size of all backups
+    cooldown: 1000 # in MS
+
+# Mysql config 
+mysql:
+  username: root 
+  database: rinocchi 
+  password: 12345
+  host: localhost
+  forceSSL: false # docs/dev-env.md
