@@ -7,6 +7,7 @@ I will be rewriting all the code so the current code will not get updates.
 - Performance
    - [ ] Cache SQL queries
    - [ ] Use Redis
+   - [ ] Cluster / Sharding
 - Organization & Code
   - [ ] Better standardization of commits
   - [ ] Improve code readability (with comments, etcetera)
